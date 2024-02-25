@@ -15,7 +15,7 @@ const MessageInput = () => {
 			</div>
 		</form>
 	);
-};
+}
 export default MessageInput;
 
 // STARTER CODE SNIPPET
@@ -38,4 +38,3 @@ export default MessageInput;
 // 	);
 // };
 // export default MessageInput;
- 44 changes: 44 additions & 0 deletions44  
