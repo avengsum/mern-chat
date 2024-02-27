@@ -1,17 +1,21 @@
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import { conv } from "../../recoil/conversationAtom";
+import { useSocket } from "../../context/SocketContext";
 
 const Conversation = ({conversation,lastIndex,emoji}) => {
   const setConversation = useSetRecoilState(conv)
   const selectedConversation = useRecoilValue(conv)
 
-  const isSelected = selectedConversation?._id === conversation._id
+  const isSelected = selectedConversation?._id === conversation._id 
+	const {onlineUsers} = useSocket();
+	const isOnline = onlineUsers?.includes(conversation._id)
+
 	return (
 		<>
 			<div className={`flex gap-2 items-center hover:bg-sky-500 rounded p-2 py-1 cursor-pointer ${isSelected ? "bg-sky-500" : ""}`} 
       onClick={() => setConversation(conversation)}
       >
-				<div className='avatar online'>
+				<div className={`avatar ${isOnline ? "online": ""}`}>
 					<div className='w-12 rounded-full'>
 						<img
 							src={conversation.profilePic}
