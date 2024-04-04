@@ -6,7 +6,6 @@ import { conv, message } from "../recoil/conversationAtom";
 const useSendMessage = () => {
 	const [loading, setLoading] = useState(false);
 	const selectedConversation = useRecoilValue(conv);
-  console.log(selectedConversation._id)
   const [messages,setMessages] = useRecoilState(message)
 
 	const sendMessage = async (message) => {

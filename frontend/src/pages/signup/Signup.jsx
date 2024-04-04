@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import GenderCheckbox from "./GenderCheckbox";
 import { useState } from "react";
 import useSignup from "../../hooks/useSignup";
-import { useAuthContext } from "../../context/AuthContext";
 
 const Signup = () => {
 
@@ -13,8 +12,6 @@ const Signup = () => {
 		confirmPassword:"",
 		gender:"",
 	})
-
-	const {setAuth} = useAuthContext();
 
 	const {loading,signup} = useSignup();
 
@@ -27,7 +24,6 @@ const Signup = () => {
 		console.log(signup)
 		await signup(inputs)
 
-		localStorage.setItem("chat-user",JSON.stringify(data))
 
 	}
 

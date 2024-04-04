@@ -8,8 +8,11 @@ import messageRoutes from './routes/messageRoutes.js'
 import { server ,app } from "./socket/socket.js";
 import cors from 'cors'
 
+
 dotenv.config()
 const PORT = process.env.PORT || 5000
+
+app.use(cors());
 
 app.use(express.json())
 app.use(cookieParser())
