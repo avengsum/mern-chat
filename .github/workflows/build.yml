@@ -1,26 +1,29 @@
 name: Build on PR
 
-on : 
+on:
   pull_request:
-      branches:
-        - main
+    branches:
+      - main
 
 jobs:
-   build:
-     run-on: ubuntu-latest
-     steps:
-     - name: checkout repo
-       uses : action/checkout@v3
-     - name : Use Node.js
-       uses: action/setup-node@v3
-       with : 
-        node-version: '20'
-     - name: change directory
-       run : cd frontend
-     - name: install dependicies
-       run : npm install
-       working-directory: frontend
-     - name: build
-       run : npm run build
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
-       
+      - name: Use Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+
+      - name: Change directory to frontend
+        run: cd frontend
+
+      - name: Install dependencies
+        run: npm install
+        working-directory: frontend
+
+      - name: Build
+        run: npm run build
+        working-directory: frontend
