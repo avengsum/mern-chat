@@ -15,7 +15,6 @@ export const SocketContextProvider = ({children}) =>{
 
   useEffect(() => {
     if(auth){
-      console.log("pahuch")
       const socket = io("http://localhost:5000",{
         query:{
           userId:auth._id
@@ -29,7 +28,6 @@ export const SocketContextProvider = ({children}) =>{
       })
 
       return () =>{ 
-        console.log("Closing socket connection");
         socket.close();
       }
     }else{
